@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GentleLeaf - экологическая гипоаллергенная косметика для чувствительной кожи. Прозрачный состав, натуральные ингредиенты, забота о планете.">
+    <title>GentleLeaf | HYPOALLERGENIC & ECO-FRIENDLY</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-green: #7CB342;
+            --dark-green: #558B2F;
+            --light-green: #DCEDC8;
+            --brown: #8D6E63;
+            --light-brown: #D7CCC8;
+            --gold: #BCAAA4;
+            --bg-cream: #FAFAFA;
+            --text-dark: #3E2723;
+            --text-light: #757575;
+            --white: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 10px var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .header-top {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            text-align: center;
+            padding: 8px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--primary-green);
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            font-size: 9px;
+            color: var(--brown);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 14px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-green);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .header-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 20px;
+            color: var(--text-dark);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-icon:hover {
+            color: var(--primary-green);
+            transform: translateY(-2px);
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .user-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary-green);
+            color: white;
+            font-size: 11px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        /* Основной контент (главная страница) */
+        .main-content {
+            transition: opacity 0.3s;
+        }
+        .main-content.hidden {
+            display: none;
+        }
+
+        /* Страницы */
+        .category-page, .delivery-page, .returns-page, .contacts-page, .blog-page, .blog-post-page, .profile-page, .eco-details-page {
+            display: none;
+            padding: 140px 5% 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .category-page.active, .delivery-page.active, .returns-page.active, .contacts-page.active, .blog-page.active, .blog-post-page.active, .profile-page.active, .eco-details-page.active {
+            display: block;
+        }
+        .page-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .back-home-btn {
+            background: none;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 10px 24px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .back-home-btn:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+        .page-title {
+            font-size: 36px;
+            color: var(--text-dark);
+        }
+        .page-content {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+        .page-content h3 {
+            margin: 25px 0 15px;
+            color: var(--primary-green);
+        }
+        .page-content p {
+            margin-bottom: 15px;
+        }
+
+        /* Блог - список статей */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .blog-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .blog-content {
+            padding: 20px;
+        }
+        .blog-title {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+        .blog-excerpt {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        /* Страница отдельной статьи */
+        .blog-post-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .blog-post-image {
+            width: 100%;
+            border-radius: 24px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .blog-post-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .blog-post-text {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        .blog-post-products {
+            margin: 30px 0;
+            padding: 20px;
+            background: var(--light-green);
+            border-radius: 20px;
+        }
+        .blog-product-link {
+            display: inline-block;
+            background: var(--primary-green);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin: 5px 10px 5px 0;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .blog-product-link:hover {
+            background: var(--dark-green);
+        }
+
+        /* Страница контактов */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+        }
+        .contact-item i {
+            width: 40px;
+            font-size: 24px;
+            color: var(--primary-green);
+        }
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: var(--light-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--dark-green);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .social-links a:hover {
+            background: var(--primary-green);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Список категорий в модальном окне */
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .category-list-item {
+            background: var(--bg-cream);
+            padding: 20px 30px;
+            border-radius: 16px;
+            font-size: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+        }
+        .category-list-item:hover {
+            border-color: var(--primary-green);
+            background: var(--white);
+            transform: translateX(8px);
+            color: var(--primary-green);
+        }
+
+        /* Продукты (категории) */
+        .products-grid-category {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .category-product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+        .category-product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+        .category-product-img {
+            height: 220px;
+            background: linear-gradient(135deg, var(--light-green), var(--light-brown));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+        .category-product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .category-product-info {
+            padding: 20px;
+        }
+        .category-product-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .category-product-desc {
+            font-size: 13px;
+            color: #757575;
+            margin-bottom: 12px;
+        }
+        .category-product-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+        .category-product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .btn-cat-cart {
+            flex: 1;
+            padding: 10px;
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-cat-cart:hover {
+            background: var(--dark-green);
+        }
+        .btn-cat-wish {
+            width: 44px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.2s;
+        }
+        .btn-cat-wish.active {
+            border-color: red;
+            color: red;
+        }
+        .btn-cat-ingredient {
+            background: none;
+            border: 1px solid var(--primary-green);
+            border-radius: 30px;
+            padding: 6px 12px;
+            font-size: 12px;
+            margin-top: 12px;
+            cursor: pointer;
+            color: var(--primary-green);
+            width: 100%;
+        }
+
+        /* Hero и другие секции */
+        .hero {
+            margin-top: 120px;
+            padding: 80px 5%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3e6cb 100%);
+        }
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-content h1 {
+            font-size: 52px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 span {
+            color: var(--primary-green);
+        }
+        .hero-tagline {
+            font-size: 20px;
+            color: var(--brown);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        .hero-description {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(124, 179, 66, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(124, 179, 66, 0.4);
+        }
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+        .btn-secondary:hover {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+        .hero-image-placeholder {
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, var(--light-green), var(--light-brown));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 200px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        .features {
+            padding: 80px 5%;
+            background: var(--white);
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        .feature-card {
+            background: var(--bg-cream);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-green);
+        }
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--light-green), var(--light-brown));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 36px;
+        }
+        .quiz-section {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: white;
+            text-align: center;
+        }
+        .quiz-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .quiz-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        .quiz-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        .eco-section {
+            padding: 80px 5%;
+            background: var(--bg-cream);
+        }
+        .eco-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .eco-image {
+            background: linear-gradient(135deg, var(--light-green), var(--light-brown));
+            border-radius: 30px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 150px;
+        }
+        .eco-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .eco-stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary-green);
+            display: block;
+        }
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 80px 5% 30px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-brand .logo-title {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .footer-social a:hover {
+            background: var(--primary-green);
+        }
+        .footer-column h4 {
+            color: var(--primary-green);
+            margin-bottom: 25px;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+        .footer-column a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .footer-column a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Модалки */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-window {
+            background: white;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            transform: translateY(30px);
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+        .modal-overlay.active .modal-window {
+            transform: translateY(0);
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #757575;
+        }
+        .modal-close:hover {
+            color: var(--primary-green);
+        }
+        .hidden {
+            display: none !important;
+        }
+        #toast-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .toast {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideInRight 0.3s ease-out;
+            border-left: 5px solid var(--primary-green);
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .cart-item, .wishlist-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-item-info, .wishlist-item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .product-thumb {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        .profile-menu {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .profile-card {
+            background: var(--bg-cream);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .quiz-question {
+            margin-bottom: 30px;
+        }
+        .quiz-question p {
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .quiz-option {
+            display: block;
+            margin: 10px 0;
+        }
+        .quiz-option label {
+            margin-left: 8px;
+            cursor: pointer;
+        }
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .quiz-result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: var(--bg-cream);
+            border-radius: 12px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+        .order-summary {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 16px;
+            margin: 20px 0;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .summary-total {
+            font-weight: bold;
+            font-size: 18px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            margin-top: 5px;
+        }
+        .carbon-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 20px 0;
+            background: var(--light-green);
+            padding: 16px;
+            border-radius: 20px;
+        }
+        .carbon-checkbox input {
+            margin-top: 3px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container, .eco-grid {
+                grid-template-columns: 1fr;
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .hero-content h1 {
+                font-size: 32px;
+            }
+            .features-grid, .products-grid-category {
+                grid-template-columns: 1fr;
+            }
+            .modal-window {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-top">
+        🌿 Бесплатная доставка при заказе от 3000 ₽ | Скидка 10% на первый заказ
+    </div>
+    <div class="header-main">
+        <a href="#" class="logo" onclick="navigateHome(); return false;">
+            <div class="logo-icon">
+                <svg viewBox="0 0 100 100">
+                    <path d="M50 10 Q30 40 50 90 Q70 40 50 10" fill="#7CB342"/>
+                    <path d="M50 20 Q40 45 50 75 Q60 45 50 20" fill="#AED581"/>
+                </svg>
+            </div>
+            <div class="logo-text">
+                <span class="logo-title">GentleLeaf</span>
+                <span class="logo-subtitle">HYPOALLERGENIC & ECO-FRIENDLY</span>
+            </div>
+        </a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a onclick="openModal('modal-categories')">Каталог</a></li>
+                <li><a onclick="document.getElementById('quiz-section').scrollIntoView({behavior: 'smooth'})">Подбор ухода</a></li>
+                <li><a onclick="document.getElementById('eco-section').scrollIntoView({behavior: 'smooth'})">Экологичность</a></li>
+                <li><a onclick="openBlogPage()">Блог</a></li>
+                <li><a onclick="openContactsPage()">Контакты</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <div class="header-icon" onclick="openModal('modal-wishlist')" title="Избранное">
+                <i class="fas fa-heart"></i>
+                <span class="cart-count" id="wishlist-count" style="display:none">0</span>
+            </div>
+            <div class="header-icon" id="userIcon" onclick="openProfilePage()" title="Личный кабинет">
+                <i class="fas fa-user"></i>
+                <span id="userNameDisplay" style="display:none;"></span>
+            </div>
+            <div class="header-icon" onclick="openModal('modal-cart')" title="Корзина">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Главная страница -->
+<div class="main-content" id="mainContent">
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Косметика, которая <span>заботится</span> о вашей коже и планете</h1>
+                <p class="hero-tagline">HYPOALLERGENIC & ECO-FRIENDLY</p>
+                <p class="hero-description">Натуральная косметика для чувствительной кожи с прозрачным составом. 97% натуральных ингредиентов, без парабенов, силиконов и агрессивных компонентов.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="openModal('modal-categories')"><i class="fas fa-shopping-bag"></i> Перейти в каталог</button>
+                    <button class="btn btn-secondary" onclick="startQuiz()"><i class="fas fa-magic"></i> Пройти тест</button>
+                </div>
+            </div>
+            <div class="hero-image"><div class="hero-image-placeholder">🌿</div></div>
+        </div>
+    </section>
+    <section class="features"><div class="container"><div class="section-title"><h2>Почему выбирают GentleLeaf</h2></div><div class="features-grid"><div class="feature-card"><div class="feature-icon">🎯</div><h3>Умный подбор продуктов</h3><p>Интерактивная анкета поможет подобрать идеальные средства для вашего типа кожи</p></div><div class="feature-card"><div class="feature-icon">🔍</div><h3>Прозрачный состав</h3><p>Наличие полного состава продукта с маркировкой безопасности</p></div><div class="feature-card"><div class="feature-icon">🌍</div><h3>Экологичность</h3><p>Расчет углеродного следа и программа переработки упаковки</p></div></div></div></section>
+    <section class="quiz-section" id="quiz-section"><div class="quiz-content"><h2>Подберите идеальный уход за 2 минуты</h2><p>Ответьте на вопросы и получите персональные рекомендации + скидку 10%</p><button class="btn btn-primary" style="font-size:16px; padding:20px 50px;" onclick="startQuiz()"><i class="fas fa-play"></i> Начать тест</button></div></section>
+    <section class="eco-section" id="eco-section">
+        <div class="eco-grid">
+            <div class="eco-image">🌍</div>
+            <div class="eco-content">
+                <h2>Забота о планете — наша миссия</h2>
+                <p>Каждый этап создания нашей косметики продуман с точки зрения экологии</p>
+                <ul style="list-style:none; margin:20px 0;">
+                    <li><i class="fas fa-check-circle" style="color:var(--primary-green); margin-right:10px;"></i>Биоразлагаемая упаковка</li>
+                    <li><i class="fas fa-check-circle" style="color:var(--primary-green); margin-right:10px;"></i>Программа "Верни баночку" — скидка 10%</li>
+                    <li><i class="fas fa-check-circle" style="color:var(--primary-green); margin-right:10px;"></i>Компенсация углеродного следа</li>
+                </ul>
+                <div class="eco-stats">
+                    <div><span class="eco-stat-number">97%</span><div>Натуральных ингредиентов</div></div>
+                    <div><span class="eco-stat-number">0</span><div>Тестов на животных</div></div>
+                    <div><span class="eco-stat-number">100%</span><div>Перерабатываемая упаковка</div></div>
+                </div>
+                <!-- НОВАЯ КНОПКА -->
+                <button class="btn btn-primary" style="margin-top: 30px;" onclick="openEcoDetailsPage()">🌱 Узнать подробнее</button>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Страница категории (оставляем как есть) -->
+<div class="category-page" id="categoryPage"><div class="page-header"><button class="back-home-btn" onclick="navigateHome()">← На главную</button><h2 class="page-title" id="categoryPageTitle">Категория</h2></div><div id="categoryProductsGrid" class="products-grid-category"></div></div>
+
+<!-- Страница доставки -->
+<div class="delivery-page" id="deliveryPage"><div class="page-header"><button class="back-home-btn" onclick="navigateHome()">← На главную</button><h2 class="page-title">Доставка</h2></div><div class="page-content"><h3>Способы доставки</h3><p><strong>Курьерская доставка по Москве</strong> — 300 ₽, бесплатно при заказе от 3000 ₽. Доставка на следующий день.</p><p><strong>Доставка по России</strong> — Почта России или СДЭК. Стоимость рассчитывается при оформлении заказа. Бесплатно при заказе от 5000 ₽.</p><p>Доставка занимает 3–7 дней в зависимости от региона.</p></div></div>
+
+<!-- Страница возврата -->
+<div class="returns-page" id="returnsPage"><div class="page-header"><button class="back-home-btn" onclick="navigateHome()">← На главную</button><h2 class="page-title">Возврат товара</h2></div><div class="page-content"><h3>Условия возврата</h3><p>Вы можете вернуть товар надлежащего качества в течение 14 дней с момента получения, если он не был в использовании и сохранены все пломбы, упаковка и этикетки.</p><h3>Как оформить возврат</h3><p>Свяжитесь с нашей службой заботы по почте <strong>returns@gentleleaf.ru</strong> или по телефону <strong>8 (800) 123-45-67</strong>. Мы поможем оформить заявку.</p><h3>Возврат денежных средств</h3><p>Деньги возвращаются на ту же карту или счёт в течение 10 рабочих дней после получения возврата на наш склад.</p><h3>Обмен</h3><p>Если вам не подошёл размер или продукт, вы можете обменять его на другой. Для этого оформите возврат и создайте новый заказ.</p></div></div>
+
+<!-- Страница контактов -->
+<div class="contacts-page" id="contactsPage">
+    <div class="page-header">
+        <button class="back-home-btn" onclick="navigateHome()">← На главную</button>
+        <h2 class="page-title">Контакты</h2>
+    </div>
+    <div class="page-content">
+        <div class="contact-info">
+            <div class="contact-item"><i class="fas fa-phone-alt"></i><span>8 (800) 123-45-67 (бесплатно по России)</span></div>
+            <div class="contact-item"><i class="fas fa-envelope"></i><span>info@gentleleaf.ru</span></div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>г. Москва, ул. Лесная, д. 7, офис 405</span></div>
+            <div class="contact-item"><i class="fas fa-clock"></i><span>Пн–Пт: 9:00 – 21:00, Сб–Вс: 10:00 – 18:00</span></div>
+        </div>
+        <h3>Мы в социальных сетях</h3>
+        <div class="social-links">
+            <a href="https://vk.com/gentleleaf" target="_blank"><i class="fab fa-vk"></i></a>
+            <a href="https://t.me/gentleleaf" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://instagram.com/gentleleaf" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/c/gentleleaf" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        <h3>Реквизиты</h3>
+        <p>ИП Иванова А.С. ИНН 1234567890, ОГРНИП 1234567890123</p>
+    </div>
+</div>
+
+<!-- Страница блога (список статей) -->
+<div class="blog-page" id="blogPage"><div class="page-header"><button class="back-home-btn" onclick="navigateHome()">← На главную</button><h2 class="page-title">Блог</h2></div><div class="blog-grid" id="blogGrid"></div></div>
+
+<!-- Страница отдельной статьи блога -->
+<div class="blog-post-page" id="blogPostPage"><div class="page-header"><button class="back-home-btn" onclick="openBlogPage()">← Назад к блогу</button><h2 class="page-title" id="blogPostTitle"></h2></div><div id="blogPostContent" class="blog-post-content"></div></div>
+
+<!-- Страница профиля -->
+<div class="profile-page" id="profilePage"><div class="page-header"><button class="back-home-btn" onclick="navigateHome()">← На главную</button><h2 class="page-title">Личный кабинет</h2></div><div class="page-content" id="profileContent"></div></div>
+
+<!-- НОВАЯ СТРАНИЦА: Подробнее об экологичности (лояльность, углеродный след, Посади лес) -->
+<div class="eco-details-page" id="ecoDetailsPage">
+    <div class="page-header">
+        <button class="back-home-btn" onclick="navigateHome()">← На главную</button>
+        <h2 class="page-title">Наша экологическая ответственность</h2>
+    </div>
+    <div class="page-content">
+        <h3>♻️ Программа лояльности «Верни баночку»</h3>
+        <p>Сдайте 5 чистых пустых упаковок от продукции GentleLeaf в любой пункт приёма вторсырья (экоцентры, фандоматы). Сфотографируйте упаковки и вывеску пункта приёма, отправьте фото на <strong>return@gentleleaf.ru</strong>. После проверки мы вышлем вам промокод на <strong>скидку 10%</strong> на следующий заказ.</p>
+        
+        <h3>🌿 Компенсация углеродного следа</h3>
+        <p>При оформлении заказа вы можете добавить <strong>50 ₽</strong> на компенсацию углеродного следа. Эти средства направляются на посадку деревьев в рамках проекта <strong>«Посади лес»</strong>. Каждое дерево поглощает до 20 кг CO₂ в год, помогая нам вместе бороться с изменением климата.</p>
+        
+        <h3>🌲 Проект «Посади лес»</h3>
+        <p>Мы гордимся сотрудничеством с проектом «Посади лес» — инициативой по восстановлению лесов по всей России. Благодаря нашим клиентам, которые поддерживают компенсацию углеродного следа, мы уже высадили более 500 деревьев. Присоединяйтесь к нам!</p>
+        <p><a href="https://posadiles.ru" target="_blank" style="color: var(--primary-green); font-weight: bold;">👉 Официальный сайт проекта «Посади лес»</a></p>
+        
+        <div style="background: #E8F5E9; padding: 20px; border-radius: 24px; margin-top: 30px; text-align: center;">
+            <i class="fas fa-seedling" style="font-size: 48px; color: var(--primary-green);"></i>
+            <p style="margin-top: 10px;">Вместе мы делаем планету чище и зеленее. Спасибо, что выбираете осознанное потребление!</p>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand"><h3 class="logo-title">GentleLeaf</h3><p>Экологическая гипоаллергенная косметика для чувствительной кожи</p>
+            <div class="footer-social">
+                <a href="https://vk.com/gentleleaf" target="_blank"><i class="fab fa-vk"></i></a>
+                <a href="https://t.me/gentleleaf" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="https://instagram.com/gentleleaf" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-column"><h4>Каталог</h4><ul><li><a onclick="openCategoryPage('cleansing')">Очищение</a></li><li><a onclick="openCategoryPage('moisturizing')">Увлажнение</a></li><li><a onclick="openCategoryPage('body')">Уход за телом</a></li><li><a onclick="openCategoryPage('special')">Спец. уход</a></li></ul></div>
+        <div class="footer-column"><h4>Информация</h4><ul><li><a href="#">О бренде</a></li><li><a onclick="openDeliveryPage()">Доставка</a></li><li><a onclick="openReturnsPage()">Возврат</a></li><li><a onclick="openContactsPage()">Контакты</a></li></ul></div>
+        <div class="footer-column"><h4>Контакты</h4><ul><li>📞 8 (800) 123-45-67</li><li>✉️ info@gentleleaf.ru</li><li>🕐 Пн-Пт: 9:00-21:00</li></ul></div>
+    </div>
+    <div style="text-align:center; padding-top:30px; border-top:1px solid rgba(255,255,255,0.1);"><p>&copy; 2026 GentleLeaf. Все права защищены.</p></div>
+</footer>
+
+<!-- Модалки -->
+<div id="modal-overlay" class="modal-overlay">
+    <div id="modal-categories" class="modal-window hidden">
+        <button class="modal-close" onclick="closeAllModals()">&times;</button>
+        <h2>Категории продуктов</h2>
+        <div class="category-list" id="category-list"></div>
+    </div>
+    <div id="modal-cart" class="modal-window hidden"><button class="modal-close" onclick="closeAllModals()">&times;</button><h2>Корзина</h2><div id="cart-items" style="max-height:400px; overflow-y:auto; margin:20px 0;"></div><div style="border-top:2px solid #eee; padding-top:15px; display:flex; justify-content:space-between; font-weight:bold; font-size:18px;"><span>Итого:</span><span id="cart-total">0 ₽</span></div><button class="btn btn-primary" style="width:100%; margin-top:20px; padding:18px;" onclick="openCheckoutForm()">Оформить заказ</button></div>
+    <div id="modal-wishlist" class="modal-window hidden"><button class="modal-close" onclick="closeAllModals()">&times;</button><h2>Избранное</h2><div id="wishlist-items" style="max-height:400px; overflow-y:auto; margin:20px 0;"></div></div>
+    <div id="modal-account" class="modal-window hidden"><button class="modal-close" onclick="closeAllModals()">&times;</button><div id="account-login"><h2>Вход / Регистрация</h2><div class="form-group"><label>Имя</label><input type="text" id="reg-name" placeholder="Ваше имя"></div><div class="form-group"><label>Email</label><input type="email" id="reg-email" placeholder="Email"></div><div class="form-group"><label>Пароль</label><input type="password" id="reg-password" placeholder="Пароль"></div><button class="btn btn-primary" style="width:100%; margin-top:10px;" onclick="registerOrLogin()">Войти / Зарегистрироваться</button><p style="text-align:center; margin-top:15px; font-size:14px;">Демо: любые данные (сохранятся в браузере)</p></div><div id="account-profile" class="hidden"><h2>Добро пожаловать!</h2><div class="profile-menu"><div class="profile-card"><h4><i class="fas fa-box"></i> Мои заказы</h4><p style="font-size:13px; color:#757575;">История покупок</p></div><div class="profile-card"><h4><i class="fas fa-gift"></i> Бонусы</h4><p style="font-size:13px; color:var(--primary-green); font-weight:bold;">350 баллов</p></div></div><button class="btn btn-secondary" style="width:100%; margin-top:20px;" onclick="logout()">Выйти</button></div></div>
+    <div id="modal-checkout" class="modal-window hidden">
+        <button class="modal-close" onclick="closeAllModals()">&times;</button>
+        <h2>Оформление заказа</h2>
+        <form id="checkout-form">
+            <div class="form-group"><label>Ваше имя *</label><input type="text" id="checkout-name" required></div>
+            <div class="form-group"><label>Телефон *</label><input type="tel" id="checkout-phone" required></div>
+            <div class="form-group"><label>Email</label><input type="email" id="checkout-email"></div>
+            <div class="form-group"><label>Адрес доставки *</label><input type="text" id="checkout-address" required></div>
+            <div class="form-group"><label>Способ оплаты</label><select id="checkout-payment"><option value="card">Картой онлайн</option><option value="cash">Наличными при получении</option></select></div>
+            
+            <!-- Блок предварительного итога -->
+            <div class="order-summary" id="checkoutSummary"></div>
+            
+            <!-- ЧЕКБОКС КОМПЕНСАЦИИ УГЛЕРОДНОГО СЛЕДА -->
+            <div class="carbon-checkbox">
+                <input type="checkbox" id="carbonOffsetCheckbox">
+                <label for="carbonOffsetCheckbox"><strong>Компенсировать углеродный след заказа — 50 ₽.</strong> Средства пойдут на посадку деревьев в рамках проекта “Посади лес“.</label>
+            </div>
+            
+            <div class="form-group"><label>Комментарий к заказу</label><textarea rows="3" id="checkout-comment"></textarea></div>
+            <button type="submit" class="btn btn-primary" style="width:100%">Подтвердить заказ</button>
+        </form>
+    </div>
+    <div id="modal-ingredients" class="modal-window hidden"><button class="modal-close" onclick="closeAllModals()">&times;</button><h3>🌿 Полный состав</h3><p id="ingredients-text" style="margin-top:20px; line-height:1.6;"></p></div>
+    <div id="modal-quiz" class="modal-window hidden" style="max-width:700px;"><button class="modal-close" onclick="closeQuiz()">&times;</button><h2>Подбор ухода</h2><div id="quiz-container"></div></div>
+</div>
+<div id="toast-container"></div>
+
+<script>
+    // ---------- БАЗА ДАННЫХ ПРОДУКТОВ (полностью сохранена) ----------
+    const productsDB = [
+        { id:1, cat:'cleansing', catName:'Очищение', name:'Очищающий гель для лица с алоэ', price:1890, emoji:'🧴', image:'https://1s4oyld5dc.ucarecd.net/14fce73e-b63f-4587-a91e-fd6eede75f5b/', desc:'97% натуральных компонентов', ingredients:'Aqua, Aloe Barbadensis Leaf Juice*, Cocamidopropyl Betaine, Decyl Glucoside, Glycerin, Xanthan Gum, Levulinic Acid, Sodium Levulinate, Parfum (100% натуральный).', tags:['сухая','чувствительная','нормальная'] },
+        { id:2, cat:'cleansing', catName:'Очищение', name:'Пенка для лица с зеленым чаем', price:1690, emoji:'🍵', image:'https://1s4oyld5dc.ucarecd.net/3e29eaf9-96c4-4d06-a695-02a45f250deb/', desc:'Для чувствительной кожи', ingredients:'Camellia Sinensis Leaf Extract*, Aqua, Glycerin, Coco-Glucoside, Sodium Cocoyl Glutamate, Citric Acid, Benzyl Alcohol, Dehydroacetic Acid.', tags:['жирная','комбинированная','чувствительная'] },
+        { id:3, cat:'cleansing', catName:'Очищение', name:'Мицеллярная вода', price:1290, emoji:'💧', image:'https://1s4oyld5dc.ucarecd.net/befaaf5e-70ee-4884-8aeb-e4d93f2c776a/', desc:'Без спирта и отдушек', ingredients:'Aqua, Glycerin, Polysorbate 20, Panthenol, Cucumis Sativus Fruit Extract, Citric Acid, Sodium Benzoate, Potassium Sorbate.', tags:['все типы','чувствительная'] },
+        { id:4, cat:'cleansing', catName:'Очищение', name:'Скраб для лица с сахаром', price:1490, emoji:'🍬', image:'https://1s4oyld5dc.ucarecd.net/854e6fe7-c16a-49b7-b38c-631e1faec09c/', desc:'Мягкое отшелушивание', ingredients:'Sucrose, Caprylic/Capric Triglyceride, Simmondsia Chinensis Seed Oil, Tocopherol, Helianthus Annuus Seed Oil, Parfum.', tags:['нормальная','сухая'] },
+        { id:5, cat:'cleansing', catName:'Очищение', name:'Гидрофильное масло', price:2190, emoji:'🫒', image:'https://r2.nanobanana-2.com/uploads/generated/d335b601-8c19-4895-87d6-bbd235740e01/0.jpeg', desc:'Растворяет макияж', ingredients:'Caprylic/Capric Triglyceride, Olea Europaea Fruit Oil, Polyglyceryl-4 Oleate, Tocopherol, Helianthus Annuus Seed Oil.', tags:['сухая','нормальная','комбинированная'] },
+        { id:6, cat:'moisturizing', catName:'Увлажнение', name:'Дневной крем SPF 15', price:2490, emoji:'☀️', image:'https://1s4oyld5dc.ucarecd.net/c444b9a2-ca2c-4abe-8c10-d442e0b37b58/', desc:'Защита и увлажнение', ingredients:'Aqua, Zinc Oxide, Caprylic/Capric Triglyceride, Glycerin, Butyrospermum Parkii Butter, Squalane, Tocopherol, Sodium Hyaluronate.', tags:['все типы','чувствительная'] },
+        { id:7, cat:'moisturizing', catName:'Увлажнение', name:'Ночной крем с маслом ши', price:2690, emoji:'🌙', image:'https://1s4oyld5dc.ucarecd.net/5a916bbc-647d-4cbd-9b6e-52bc4e1a793a/', desc:'Интенсивное питание', ingredients:'Butyrospermum Parkii Butter*, Aqua, Glycerin, Simmondsia Chinensis Oil, Rosa Canina Oil, Bisabolol, Tocopherol.', tags:['сухая','чувствительная'] },
+        { id:8, cat:'moisturizing', catName:'Увлажнение', name:'Сыворотка с гиалуроновой кислотой', price:2890, emoji:'💦', image:'https://1s4oyld5dc.ucarecd.net/5fbc093f-c1c2-486b-b39f-2c2ee898ad85/', desc:'Глубокое увлажнение', ingredients:'Aqua, Sodium Hyaluronate, Glycerin, Panthenol, Aloe Barbadensis Leaf Juice, Xanthan Gum, Benzyl Alcohol.', tags:['все типы','сухая'] },
+        { id:9, cat:'moisturizing', catName:'Увлажнение', name:'Увлажняющая тканевая маска', price:390, emoji:'🎭', image:'https://1s4oyld5dc.ucarecd.net/2afe954b-2c03-451e-ab66-fd4743aafd24/', desc:'Экспресс-уход', ingredients:'Aqua, Glycerin, Sodium Hyaluronate, Butylene Glycol, Centella Asiatica Extract, Panthenol.', tags:['все типы'] },
+        { id:10, cat:'moisturizing', catName:'Увлажнение', name:'Крем для век', price:2290, emoji:'👁️', image:'https://1s4oyld5dc.ucarecd.net/8d447dae-b909-4cd7-b62b-4c7d81bf5850/', desc:'Против темных кругов', ingredients:'Aqua, Glycerin, Caffeine, Sodium Hyaluronate, Cucumis Sativus Extract, Tocopherol, Xanthan Gum.', tags:['все типы'] },
+        { id:11, cat:'body', catName:'Уход за телом', name:'Гель для душа с овсом', price:1390, emoji:'🚿', image:'https://1s4oyld5dc.ucarecd.net/238abaa5-555c-43cc-b6a9-393d841752e6/', desc:'Успокаивающий', ingredients:'Aqua, Avena Sativa Extract, Decyl Glucoside, Glycerin, Xanthan Gum, Citric Acid, Sodium Benzoate.', tags:['чувствительная','сухая'] },
+        { id:12, cat:'body', catName:'Уход за телом', name:'Лосьон для тела с маслом какао', price:1890, emoji:'🍫', image:'https://1s4oyld5dc.ucarecd.net/b7f1b67e-4f00-4ea4-8e85-46b9420f80a3/', desc:'Питание 24ч', ingredients:'Theobroma Cacao Seed Butter, Aqua, Glycerin, Caprylic/Capric Triglyceride, Cetearyl Olivate, Sorbitan Olivate, Tocopherol.', tags:['сухая'] },
+        { id:13, cat:'body', catName:'Уход за телом', name:'Скраб для тела с кофе', price:1590, emoji:'☕', image:'https://1s4oyld5dc.ucarecd.net/d28b711c-300c-459d-b8e9-e85febc3e8f8/', desc:'Антицеллюлитный', ingredients:'Coffea Arabica Seed Powder, Caprylic/Capric Triglyceride, Sucrose, Simmondsia Chinensis Oil, Tocopherol.', tags:['нормальная','комбинированная'] },
+        { id:14, cat:'body', catName:'Уход за телом', name:'Крем для рук', price:690, emoji:'🤲', image:'https://1s4oyld5dc.ucarecd.net/959e1b24-8d27-4ac5-a34d-be8894612833/', desc:'Защита и уход', ingredients:'Aqua, Glycerin, Butyrospermum Parkii Butter, Cetearyl Alcohol, Glyceryl Stearate, Allantoin, Panthenol, Tocopherol.', tags:['все типы'] },
+        { id:15, cat:'body', catName:'Уход за телом', name:'Твердый шампунь', price:1190, emoji:'🧼', image:'https://1s4oyld5dc.ucarecd.net/602165a7-bbba-45a0-8db6-b28e9b4b416f/', desc:'Без сульфатов', ingredients:'Sodium Cocoyl Isethionate, Cetearyl Alcohol, Glycerin, Panthenol, Hydrolyzed Rice Protein, Parfum.', tags:['все типы'] },
+        { id:16, cat:'special', catName:'Спец. уход', name:'Крем при розацеа', price:2990, emoji:'🌹', image:'https://1s4oyld5dc.ucarecd.net/457e8633-47ad-4689-8500-4099ef079bd0/', desc:'Снижает покраснения', ingredients:'Aqua, Niacinamide, Centella Asiatica Extract, Squalane, Zinc PCA, Bisabolol, Allantoin, Tocopherol.', tags:['чувствительная','розовые угри'] },
+        { id:17, cat:'special', catName:'Спец. уход', name:'Бальзам для атопиков', price:2490, emoji:'🩹', image:'https://1s4oyld5dc.ucarecd.net/e66a56e0-b86f-4456-90d3-33e3ad2f4cb9/', desc:'Восстановление барьера', ingredients:'Aqua, Ceramide NP, Cholesterol, Squalane, Glycerin, Butyrospermum Parkii Butter, Panthenol.', tags:['чувствительная','атопичная'] },
+        { id:18, cat:'special', catName:'Спец. уход', name:'Успокаивающий тонер', price:1790, emoji:'🌿', image:'https://1s4oyld5dc.ucarecd.net/062d980a-46cc-4d9f-b60d-bc3c6f0c81ba/', desc:'Без спирта', ingredients:'Aqua, Glycerin, Panthenol, Allantoin, Centella Asiatica Extract, Sodium Hyaluronate, Citric Acid.', tags:['чувствительная','все типы'] },
+        { id:19, cat:'special', catName:'Спец. уход', name:'Бальзам для губ', price:590, emoji:'👄', image:'https://1s4oyld5dc.ucarecd.net/75710cab-10a1-4f05-b8d2-e55dacff057f/', desc:'Защита и питание', ingredients:'Cera Alba, Butyrospermum Parkii Butter, Cocos Nucifera Oil, Simmondsia Chinensis Oil, Tocopherol, Parfum.', tags:['все типы'] },
+        { id:20, cat:'special', catName:'Спец. уход', name:'Барьерная маска для восстановления микробиома', price:2190, emoji:'🛡️', image:'https://1s4oyld5dc.ucarecd.net/e32aa44a-af38-493b-8c44-4311061b870d/', desc:'Восстановление', ingredients:'Aqua, Glycerin, Squalane, Ceramide NP, Panthenol, Allantoin, Xanthan Gum, Sodium Hyaluronate.', tags:['чувствительная','сухая'] }
+    ];
+
+    // ---------- ДАННЫЕ БЛОГА (статьи) ----------
+    const blogArticles = [
+        { 
+            id: 1,
+            title: "Как победить сухость кожи",
+            image: "https://avatars.mds.yandex.net/i?id=03fa09d59170b077c8d0bd277e84233028352fad-12648253-images-thumbs&n=13",
+            excerpt: "Сухость кожи может вызывать дискомфорт и шелушения. Вот какие средства помогут увлажнить и восстановить защитный барьер.",
+            fullText: "Сухая кожа — одна из самых распространённых проблем, особенно в холодное время года. Она часто шелушится, появляется чувство стянутости, может возникать зуд. Причинами сухости могут быть генетическая предрасположенность, неправильный уход, агрессивные косметические средства, а также воздействие окружающей среды. Чтобы восстановить гидролипидный баланс, важно использовать увлажняющие и питательные компоненты. В первую очередь обратите внимание на гиалуроновую кислоту — она притягивает и удерживает влагу в клетках кожи. Также полезны церамиды, которые укрепляют защитный барьер. Не забывайте про масла: ши, жожоба, арганы — они питают и смягчают. Очищение должно быть максимально мягким, без спирта и агрессивных ПАВ. Увлажняющий крем или сыворотку наносите дважды в день. Раз в неделю делайте увлажняющие маски. Пейте достаточно воды и используйте увлажнитель воздуха в помещении. При сильной сухости стоит обратиться к дерматологу — возможно, потребуется специальный уход. В нашем интернет-магазине вы найдёте средства, разработанные именно для сухой и обезвоженной кожи. Они прошли дерматологическое тестирование и подходят даже для атопичной кожи.",
+            productIds: [8,7],
+            productNames: ["Сыворотка с гиалуроном", "Ночной крем с ши"]
+        },
+        { id: 2, title: "Уход за чувствительной кожей", image: "https://avatars.mds.yandex.net/i?id=cbd06b9e35b9bddf8e0000fbb45e191349e51137-4079319-images-thumbs&n=13", excerpt: "Чувствительная кожа требует бережного очищения...", fullText: "Чувствительная кожа остро реагирует на внешние раздражители: холод, ветер, агрессивную косметику, стресс. Основные признаки — покраснение, зуд, жжение, шелушение после использования новых средств. Уход за такой кожей должен быть максимально простым и безопасным. Исключите средства со спиртом, отдушками, красителями и парабенами. Выбирайте гипоаллергенные формулы с пометкой «для чувствительной кожи». Очищайте лицо мягкими пенками или мицеллярной водой без мыла. Тоник должен быть без спирта, лучше с успокаивающими ингредиентами: ромашка, алоэ, пантенол. Увлажняющий крем выбирайте с легкой текстурой, без комедогенных масел. В составе ищите ниацинамид, бисаболол, аллантоин — они снимают раздражение. Избегайте активных кислот и ретинола без назначения врача. Солнцезащитный крем обязателен, так как чувствительная кожа часто страдает от УФ-лучей. Не используйте скрабы с крупными абразивными частицами — замените их на энзимные пудры или мягкие гоммажи. Перед покупкой нового средства тестируйте его на сгибе локтя. Ведите дневник ухода, чтобы отслеживать реакцию. Наши продукты разработаны специально для чувствительной кожи и не содержат раздражающих компонентов.", productIds: [2,3,18], productNames: ["Пенка с зеленым чаем", "Мицеллярная вода", "Успокаивающий тонер"] },
+        { id: 3, title: "Как уменьшить покраснения и купероз", image: "https://avatars.mds.yandex.net/i?id=7ef74cfffa9a4a94ccad6849dd69b517726cce13-4518959-images-thumbs&n=13", excerpt: "Розацеа и покраснения можно контролировать...", fullText: "Купероз и розацеа — это сосудистые заболевания кожи, которые проявляются покраснением, сосудистыми звёздочками и расширенными капиллярами. Чаще всего они возникают у людей со светлой и чувствительной кожей. Причины могут быть разными: генетика, гормональные изменения, воздействие ультрафиолета, острая пища, алкоголь, резкие перепады температур. Уход при куперозе должен быть направлен на укрепление стенок сосудов и снижение воспаления. В составе косметики ищите рутин, гесперидин, витамин С, экстракт гинкго билоба — они улучшают микроциркуляцию. Ниацинамид и центелла азиатская уменьшают покраснение и успокаивают. Избегайте агрессивных скрабов, пилингов с высоким процентом кислот, горячей воды и распаривания. Очищайте кожу мягкими средствами без спирта. Обязательно используйте крем с SPF 30+ каждый день, даже зимой. Холод и ветер тоже повреждают сосуды, поэтому защищайте лицо шарфом. В рацион добавьте продукты с рутином (гречка, цитрусовые) и омега-3. Лазерная терапия может помочь удалить уже появившиеся сосудистые звёздочки. Наш специальный крем при розацеа содержит комплекс активов, снижающих покраснение и укрепляющих капилляры.", productIds: [16,18], productNames: ["Крем при розацеа", "Успокаивающий тонер"] },
+        { id: 4, title: "Питание и восстановление барьера", image: "https://avatars.mds.yandex.net/i?id=2ebc5380d8f1c5df1698af8450d9c3f55b2da533-12522553-images-thumbs&n=13", excerpt: "Здоровый барьер кожи — залог сияющего вида...", fullText: "Липидный барьер кожи — это защитная мантия, которая удерживает влагу и предотвращает проникновение бактерий и раздражителей. Когда барьер нарушен, кожа становится сухой, шелушится, появляется раздражение, акне или дерматиты. Причинами нарушения могут быть агрессивные очищающие средства, частые пилинги, неправильно подобранная косметика, стресс, неподходящий климат. Восстановление барьера — процесс долгий, но возможный. Ключевые ингредиенты для этого: церамиды, сквалан, холестерин, жирные кислоты. Они встраиваются в липидные слои и склеивают роговые чешуйки. Также полезны пантенол, аллантоин, бисаболол — они успокаивают и стимулируют регенерацию. Избегайте очищения с мылом и жёсткими ПАВ. Замените тоник с кислотой на увлажняющий. Наносите сыворотку с керамидами под крем. Ночной крем должен быть более плотным и питательным. Раз в неделю делайте восстанавливающую маску. Не забывайте про увлажнение изнутри — пейте достаточное количество воды. В период восстановления откажитесь от ретинола и кислот. Наши средства для интенсивного ухода содержат оптимальную комбинацию липидов и успокаивающих компонентов для быстрого восстановления барьерной функции.", productIds: [7,17,20], productNames: ["Ночной крем с ши", "Бальзам для атопиков", "Маска для барьера"] }
+    ];
+
+    // Глобальные переменные
+    let cart = JSON.parse(localStorage.getItem('gl_cart')) || [];
+    let wishlist = JSON.parse(localStorage.getItem('gl_wishlist')) || [];
+    let currentUser = JSON.parse(localStorage.getItem('gl_currentUser')) || null;
+    let users = JSON.parse(localStorage.getItem('gl_users')) || [];
+    let quizCurrentStep = 0, quizAnswers = [];
+    const quizQuestions = [
+        { text:"Какой у вас тип кожи?", options:["Сухая","Жирная","Комбинированная","Нормальная","Чувствительная"] },
+        { text:"Есть ли у вас покраснения или купероз?", options:["Да, выраженные","Незначительные","Нет"] },
+        { text:"Как часто появляются шелушения?", options:["Часто","Иногда","Почти никогда"] },
+        { text:"Беспокоит ли жирный блеск в Т-зоне?", options:["Да","Умеренно","Нет"] },
+        { text:"Ваша кожа реагирует на новую косметику?", options:["Сильно (покраснения, зуд)","Умеренно","Почти не реагирует"] },
+        { text:"Есть ли у вас атопический дерматит или экзема?", options:["Да","Иногда бывает","Нет"] },
+        { text:"Как часто вы используете увлажняющие средства?", options:["Дважды в день","Один раз в день","Редко"] },
+        { text:"Какие проблемы вас беспокоят больше всего?", options:["Сухость и стянутость","Жирный блеск и расширенные поры","Чувствительность и покраснения","Тусклый цвет лица"] },
+        { text:"Ваш возраст?", options:["До 25","25-35","35-45","45+"] },
+        { text:"Предпочитаете ли вы средства без отдушек?", options:["Да, обязательно","Мне всё равно","Люблю приятные ароматы"] }
+    ];
+
+    // ---------- ФУНКЦИИ НАВИГАЦИИ (полностью сохранены) ----------
+    function hideAllPages() {
+        document.getElementById('mainContent').classList.add('hidden');
+        document.getElementById('categoryPage').classList.remove('active');
+        document.getElementById('deliveryPage').classList.remove('active');
+        document.getElementById('returnsPage').classList.remove('active');
+        document.getElementById('contactsPage').classList.remove('active');
+        document.getElementById('blogPage').classList.remove('active');
+        document.getElementById('blogPostPage').classList.remove('active');
+        document.getElementById('profilePage').classList.remove('active');
+        document.getElementById('ecoDetailsPage').classList.remove('active');
+    }
+
+    function openCategoryPage(catId) {
+        hideAllPages(); document.getElementById('categoryPage').classList.add('active');
+        let title = { cleansing:'Очищение', moisturizing:'Увлажнение', body:'Уход за телом', special:'Специальный уход' }[catId] || 'Категория';
+        document.getElementById('categoryPageTitle').innerText = title;
+        const products = productsDB.filter(p => p.cat === catId);
+        document.getElementById('categoryProductsGrid').innerHTML = products.map(p => {
+            const inWish = wishlist.includes(p.id);
+            const imageHtml = p.image ? `<img src="${p.image}" alt="${p.name}">` : p.emoji;
+            return `<div class="category-product-card"><div class="category-product-img">${imageHtml}</div><div class="category-product-info"><div class="category-product-name">${p.name}</div><div class="category-product-desc">${p.desc}</div><div class="category-product-price">${p.price} ₽</div><div class="category-product-actions"><button class="btn-cat-cart" onclick="addToCart(${p.id})"><i class="fas fa-shopping-bag"></i> В корзину</button><button class="btn-cat-wish ${inWish ? 'active' : ''}" onclick="toggleWishlist(${p.id})">${inWish ? '❤️' : '🤍'}</button></div><button class="btn-cat-ingredient" onclick="showIngredients(${p.id})"><i class="fas fa-leaf"></i> Полный состав</button></div></div>`;
+        }).join('');
+        window.location.hash = `category/${catId}`;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openDeliveryPage() { hideAllPages(); document.getElementById('deliveryPage').classList.add('active'); window.location.hash = 'delivery'; window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function openReturnsPage() { hideAllPages(); document.getElementById('returnsPage').classList.add('active'); window.location.hash = 'returns'; window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function openContactsPage() { hideAllPages(); document.getElementById('contactsPage').classList.add('active'); window.location.hash = 'contacts'; window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function openBlogPage() { hideAllPages(); document.getElementById('blogPage').classList.add('active'); renderBlogList(); window.location.hash = 'blog'; window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function openBlogPost(postId) {
+        const post = blogArticles.find(p => p.id === postId);
+        if(!post) return;
+        hideAllPages();
+        document.getElementById('blogPostPage').classList.add('active');
+        document.getElementById('blogPostTitle').innerText = post.title;
+        let productsHtml = '';
+        if(post.productIds && post.productIds.length) {
+            productsHtml = `<div class="blog-post-products"><h3>Товары, которые помогут:</h3>`;
+            post.productIds.forEach((pid, idx) => {
+                const p = productsDB.find(p => p.id === pid);
+                if(p) {
+                    productsHtml += `<div style="margin-bottom:15px;"><strong>${p.name}</strong> — ${p.price} ₽<br><button class="blog-product-link" onclick="addToCart(${p.id}); showToast('${p.name} добавлен в корзину');">Добавить в корзину</button></div>`;
+                }
+            });
+            productsHtml += `</div>`;
+        }
+        const fullHtml = `<div class="blog-post-image"><img src="${post.image}" alt="${post.title}"></div><div class="blog-post-text">${post.fullText.replace(/\n/g, '<br>')}</div>${productsHtml}`;
+        document.getElementById('blogPostContent').innerHTML = fullHtml;
+        window.location.hash = `blog/post/${postId}`;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function renderBlogList() {
+        const grid = document.getElementById('blogGrid');
+        grid.innerHTML = blogArticles.map(art => `<div class="blog-card" onclick="openBlogPost(${art.id})"><div class="blog-image"><img src="${art.image}" alt="${art.title}"></div><div class="blog-content"><h3 class="blog-title">${art.title}</h3><div class="blog-excerpt">${art.excerpt}</div></div></div>`).join('');
+    }
+
+    function openProfilePage() { if (!currentUser) { openModal('modal-account'); return; } hideAllPages(); document.getElementById('profilePage').classList.add('active'); renderProfile(); window.location.hash = 'profile'; window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function navigateHome() { hideAllPages(); document.getElementById('mainContent').classList.remove('hidden'); window.location.hash = ''; window.scrollTo({ top: 0, behavior: 'smooth' }); updateUserIcon(); }
+    
+    // Новая функция для открытия страницы с подробностями экологичности
+    function openEcoDetailsPage() {
+        hideAllPages();
+        document.getElementById('ecoDetailsPage').classList.add('active');
+        window.location.hash = 'eco-details';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ---------- ПРОФИЛЬ И ПОЛЬЗОВАТЕЛИ ----------
+    function registerOrLogin() {
+        const name = document.getElementById('reg-name').value.trim();
+        const email = document.getElementById('reg-email').value.trim();
+        const password = document.getElementById('reg-password').value.trim();
+        if(!name || !email || !password) { showToast('Заполните все поля'); return; }
+        let user = users.find(u => u.email === email);
+        if(!user) {
+            user = { name, email, password, orders: [] };
+            users.push(user);
+            localStorage.setItem('gl_users', JSON.stringify(users));
+            showToast('Регистрация успешна!');
+        } else if(user.password !== password) { showToast('Неверный пароль'); return; }
+        currentUser = user;
+        localStorage.setItem('gl_currentUser', JSON.stringify(currentUser));
+        closeAllModals();
+        updateUserIcon();
+        showToast(`Добро пожаловать, ${user.name}!`);
+        openProfilePage();
+    }
+    function logout() {
+        currentUser = null;
+        localStorage.removeItem('gl_currentUser');
+        updateUserIcon();
+        navigateHome();
+        showToast('Вы вышли из аккаунта');
+    }
+    function updateUserIcon() {
+        const iconDiv = document.getElementById('userIcon');
+        if(currentUser) {
+            iconDiv.innerHTML = `<div class="user-avatar">${currentUser.name.charAt(0).toUpperCase()}</div><span class="user-name">${currentUser.name}</span>`;
+        } else {
+            iconDiv.innerHTML = `<i class="fas fa-user"></i>`;
+        }
+    }
+    function renderProfile() {
+        const container = document.getElementById('profileContent');
+        if(!currentUser) { container.innerHTML = '<p>Пожалуйста, войдите в аккаунт</p>'; return; }
+        let ordersHtml = '<div class="orders-list"><h3>История заказов</h3>';
+        if(currentUser.orders.length === 0) ordersHtml += '<p>У вас пока нет заказов.</p>';
+        else {
+            currentUser.orders.forEach((order, idx) => {
+                ordersHtml += `<div class="order-item"><div class="order-header"><span>Заказ №${idx+1}</span><span>${order.date}</span></div><div class="order-products">Товары: ${order.items.map(i => `${i.name} x${i.qty}`).join(', ')}<br>Сумма: ${order.total} ₽</div></div>`;
+            });
+        }
+        ordersHtml += '</div>';
+        container.innerHTML = `<div class="profile-info"><div class="profile-field"><strong>Имя:</strong> ${currentUser.name}</div><div class="profile-field"><strong>Email:</strong> ${currentUser.email}</div></div>${ordersHtml}<button class="btn btn-secondary" style="margin-top:20px;" onclick="logout()">Выйти из аккаунта</button>`;
+    }
+
+    // ---------- КОРЗИНА, ИЗБРАННОЕ, ЗАКАЗЫ ----------
+    function addToCart(id) {
+        let item = cart.find(i => i.id === id);
+        if(item) item.qty++; else cart.push({ id, qty:1 });
+        saveData(); updateCounters(); showToast('Товар добавлен в корзину');
+        if(document.getElementById('categoryPage').classList.contains('active')) { let cat = window.location.hash.split('/')[1]; if(cat) openCategoryPage(cat); }
+    }
+    function removeFromCart(id) { cart = cart.filter(i => i.id !== id); saveData(); updateCounters(); renderCart(); }
+    function changeQty(id, delta) { let item = cart.find(i => i.id === id); if(item) { item.qty += delta; if(item.qty <= 0) removeFromCart(id); else { saveData(); renderCart(); updateCounters(); } } }
+    function renderCart() {
+        const container = document.getElementById('cart-items'), totalEl = document.getElementById('cart-total');
+        if(cart.length===0) { container.innerHTML = '<p style="text-align:center; color:#757575; padding:40px;">Корзина пуста</p>'; totalEl.innerText = '0 ₽'; return; }
+        let total=0;
+        container.innerHTML = cart.map(item => { let p=productsDB.find(p=>p.id===item.id); let sum=p.price*item.qty; total+=sum; 
+            const productImage = p.image ? `<img src="${p.image}" class="product-thumb" alt="${p.name}">` : `<span style="font-size:40px;">${p.emoji}</span>`;
+            return `<div class="cart-item"><div class="cart-item-info">${productImage}<div><div style="font-weight:600;">${p.name}</div><div style="font-size:13px;">${p.price} ₽</div><div><button onclick="changeQty(${item.id},-1)">-</button><span>${item.qty}</span><button onclick="changeQty(${item.id},1)">+</button></div></div></div><div style="text-align:right;"><div style="font-weight:bold;">${sum} ₽</div><button onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i> Удалить</button></div></div>`;
+        }).join('');
+        totalEl.innerText = total.toLocaleString() + ' ₽';
+    }
+    function toggleWishlist(id) {
+        if(wishlist.includes(id)) { wishlist = wishlist.filter(i=>i!==id); showToast('Удалено из избранного'); }
+        else { wishlist.push(id); showToast('Добавлено в избранное ❤️'); }
+        saveData(); updateCounters();
+        if(document.getElementById('categoryPage').classList.contains('active')) { let cat = window.location.hash.split('/')[1]; if(cat) openCategoryPage(cat); }
+        renderWishlist();
+    }
+    function renderWishlist() {
+        const container = document.getElementById('wishlist-items');
+        if(wishlist.length===0) { container.innerHTML = '<p style="text-align:center; padding:40px;">Список избранного пуст</p>'; return; }
+        container.innerHTML = wishlist.map(id => { let p=productsDB.find(p=>p.id===id);
+            const productImage = p.image ? `<img src="${p.image}" class="product-thumb" alt="${p.name}">` : `<span style="font-size:40px;">${p.emoji}</span>`;
+            return `<div class="wishlist-item"><div class="wishlist-item-info">${productImage}<div><div style="font-weight:600;">${p.name}</div><div style="color:var(--primary-green);">${p.price} ₽</div></div></div><div><button class="btn btn-primary" style="padding:8px 16px;" onclick="addToCart(${p.id})">В корзину</button><button onclick="toggleWishlist(${p.id})"><i class="fas fa-trash"></i></button></div></div>`;
+        }).join('');
+    }
+    function showIngredients(id) { let p=productsDB.find(p=>p.id===id); if(p) { document.getElementById('ingredients-text').innerHTML = `<strong>${p.name}</strong><br><br>${p.ingredients}`; openModal('modal-ingredients'); } }
+    function openCheckoutForm() { if(cart.length===0) { showToast('Корзина пуста'); return; } openModal('modal-checkout'); updateCheckoutSummary(); }
+    
+    // Обновление суммы в чекбоксе
+    function updateCheckoutSummary() {
+        let subtotal = cart.reduce((sum, item) => sum + item.qty * (productsDB.find(p => p.id === item.id)?.price || 0), 0);
+        let offset = document.getElementById('carbonOffsetCheckbox')?.checked ? 50 : 0;
+        let total = subtotal + offset;
+        let summaryDiv = document.getElementById('checkoutSummary');
+        if (summaryDiv) {
+            summaryDiv.innerHTML = `
+                <div class="summary-row"><span>Товары:</span><span>${subtotal} ₽</span></div>
+                ${offset ? '<div class="summary-row"><span>Компенсация CO₂:</span><span>50 ₽</span></div>' : ''}
+                <div class="summary-row summary-total"><span>Итого к оплате:</span><span>${total} ₽</span></div>
+            `;
+        }
+    }
+    
+    document.getElementById('carbonOffsetCheckbox')?.addEventListener('change', updateCheckoutSummary);
+    
+    document.getElementById('checkout-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let name = document.getElementById('checkout-name').value.trim(), phone = document.getElementById('checkout-phone').value.trim(), address = document.getElementById('checkout-address').value.trim();
+        if(!name || !phone || !address) { showToast('Заполните обязательные поля'); return; }
+        let orderItems = cart.map(item => { let p=productsDB.find(p=>p.id===item.id); return { name:p.name, qty:item.qty, price:p.price }; });
+        let subtotal = cart.reduce((s,item)=>s+item.qty*productsDB.find(p=>p.id===item.id).price,0);
+        let offset = document.getElementById('carbonOffsetCheckbox')?.checked ? 50 : 0;
+        let total = subtotal + offset;
+        let order = { date: new Date().toLocaleString(), items: orderItems, total: total, carbonOffset: offset > 0 };
+        if(currentUser) {
+            currentUser.orders.push(order);
+            let userIndex = users.findIndex(u => u.email === currentUser.email);
+            if(userIndex !== -1) users[userIndex] = currentUser;
+            localStorage.setItem('gl_users', JSON.stringify(users));
+            localStorage.setItem('gl_currentUser', JSON.stringify(currentUser));
+        }
+        cart = []; saveData(); updateCounters(); closeAllModals(); navigateHome();
+        alert(`Спасибо, ${name}! Ваш заказ на сумму ${total}₽ принят. ${offset ? 'Вы поддержали посадку леса 🌲' : ''}`);
+    });
+
+    // ---------- ТЕСТ (сокращён, но рабочий) ----------
+    function startQuiz() { quizCurrentStep=0; quizAnswers=[]; renderQuizStep(); openModal('modal-quiz'); }
+    function renderQuizStep() {
+        const container = document.getElementById('quiz-container');
+        if(quizCurrentStep < quizQuestions.length) {
+            let q = quizQuestions[quizCurrentStep];
+            let html = `<div class="quiz-question"><p>${quizCurrentStep+1}. ${q.text}</p>` + q.options.map(opt => `<label class="quiz-option"><input type="radio" name="q${quizCurrentStep}" value="${opt}"> ${opt}</label>`).join('') + `</div><div class="quiz-nav"><button class="btn btn-secondary" onclick="prevQuizStep()" ${quizCurrentStep===0?'disabled':''}>Назад</button><button class="btn btn-primary" onclick="nextQuizStep()">Далее</button></div>`;
+            container.innerHTML = html;
+            if(quizAnswers[quizCurrentStep]) { let val=quizAnswers[quizCurrentStep]; document.querySelectorAll(`input[name="q${quizCurrentStep}"]`).forEach(r=>{if(r.value===val) r.checked=true;}); }
+        } else {
+            let recIds = [1,6,8]; // упрощённые рекомендации
+            let recProducts = recIds.map(id=>productsDB.find(p=>p.id===id)).filter(p=>p);
+            let html = `<h3>Ваши персональные рекомендации</h3><p>На основе ответов мы подобрали для вас:</p>` + recProducts.map(prod => `<div class="quiz-result-item"><div><strong>${prod.name}</strong> — ${prod.price} ₽<br><small>${prod.desc}</small></div><button class="btn btn-primary" onclick="addToCart(${prod.id}); showToast('${prod.name} добавлен');">В корзину</button></div>`).join('') + `<div class="quiz-nav"><button class="btn btn-secondary" onclick="closeQuiz()">Закрыть</button></div>`;
+            container.innerHTML = html;
+        }
+    }
+    function nextQuizStep() { let selected = document.querySelector(`input[name="q${quizCurrentStep}"]:checked`); if(!selected) { showToast('Выберите ответ'); return; } quizAnswers[quizCurrentStep] = selected.value; quizCurrentStep++; renderQuizStep(); }
+    function prevQuizStep() { if(quizCurrentStep>0) { quizCurrentStep--; renderQuizStep(); } }
+    function closeQuiz() { closeAllModals(); }
+
+    // ---------- ОБЩИЕ ----------
+    function openModal(id) { 
+        closeAllModals(); 
+        document.getElementById('modal-overlay').classList.add('active'); 
+        document.getElementById(id).classList.remove('hidden'); 
+        if(id==='modal-cart') renderCart(); 
+        if(id==='modal-wishlist') renderWishlist(); 
+        if(id==='modal-categories') showCategories(); 
+        if(id==='modal-checkout') updateCheckoutSummary();
+    }
+    function closeAllModals() { document.getElementById('modal-overlay').classList.remove('active'); document.querySelectorAll('.modal-window').forEach(el=>el.classList.add('hidden')); }
+    document.getElementById('modal-overlay').addEventListener('click',(e)=>{if(e.target.id==='modal-overlay') closeAllModals();});
+    
+    function showCategories() {
+        const categories = [
+            { id: 'cleansing', name: 'Очищение' },
+            { id: 'moisturizing', name: 'Увлажнение' },
+            { id: 'body', name: 'Уход за телом' },
+            { id: 'special', name: 'Специальный уход' }
+        ];
+        const container = document.getElementById('category-list');
+        container.innerHTML = categories.map(cat => `<div class="category-list-item" onclick="openCategoryPage('${cat.id}'); closeAllModals();">${cat.name}</div>`).join('');
+    }
+    
+    function saveData() { localStorage.setItem('gl_cart', JSON.stringify(cart)); localStorage.setItem('gl_wishlist', JSON.stringify(wishlist)); }
+    function updateCounters() {
+        let cartCount = cart.reduce((s,i)=>s+i.qty,0);
+        document.getElementById('cart-count').innerText = cartCount;
+        document.getElementById('cart-count').style.display = cartCount>0 ? 'flex' : 'none';
+        let wishCount = wishlist.length;
+        document.getElementById('wishlist-count').innerText = wishCount;
+        document.getElementById('wishlist-count').style.display = wishCount>0 ? 'flex' : 'none';
+    }
+    function showToast(msg) { let c=document.getElementById('toast-container'); let t=document.createElement('div'); t.className='toast'; t.innerHTML=`<span>${msg}</span>`; c.appendChild(t); setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateX(100%)'; setTimeout(()=>t.remove(),300); },3000); }
+
+    // Инициализация
+    document.addEventListener('DOMContentLoaded', () => {
+        updateCounters(); updateUserIcon();
+        window.addEventListener('scroll', () => { document.querySelector('.header').classList.toggle('scrolled', window.scrollY>100); });
+        function handleHash() {
+            let hash = window.location.hash.slice(1);
+            if(hash.startsWith('category/')) { let cat=hash.split('/')[1]; if(['cleansing','moisturizing','body','special'].includes(cat)) openCategoryPage(cat); else navigateHome(); }
+            else if(hash==='delivery') openDeliveryPage();
+            else if(hash==='returns') openReturnsPage();
+            else if(hash==='contacts') openContactsPage();
+            else if(hash==='blog') openBlogPage();
+            else if(hash.startsWith('blog/post/')) { let postId = parseInt(hash.split('/')[2]); if(!isNaN(postId) && blogArticles.find(a=>a.id===postId)) openBlogPost(postId); else navigateHome(); }
+            else if(hash==='profile') { if(currentUser) openProfilePage(); else navigateHome(); }
+            else if(hash==='eco-details') openEcoDetailsPage();
+            else navigateHome();
+        }
+        handleHash();
+        window.addEventListener('hashchange', handleHash);
+    });
+</script>
+</body>
+</html>
